@@ -2,7 +2,8 @@
   "scripts": {
     "dev": "webpack -w",
     "prod": "webpack --env.production",
-    "release": "npm run checkFormat && npm run lint && npm run prod",
+    "release": "npm run checkFormat && npm run lint && rm -rdf dist && npm run prod && npm run zipDist",
+    "zipDist": "cd dist && zip -r -FS ../dist.zip *",
     "lint": "node_modules/tslint/bin/tslint --project tsconfig.json",
     "checkFormat": "prettier --check '**/*.{ts,tsx}' '!dist/**'",
     "format": "prettier --write '**/*.{ts,tsx}' '!dist/**'"
