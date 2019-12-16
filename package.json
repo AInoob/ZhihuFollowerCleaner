@@ -1,0 +1,33 @@
+{
+  "scripts": {
+    "dev": "webpack -w",
+    "prod": "webpack --env.production",
+    "release": "npm run checkFormat && npm run lint && npm run prod",
+    "lint": "node_modules/tslint/bin/tslint --project tsconfig.json",
+    "checkFormat": "prettier --check '**/*.{ts,tsx}' '!dist/**'",
+    "format": "prettier --write '**/*.{ts,tsx}' '!dist/**'"
+  },
+  "devDependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.26",
+    "@fortawesome/free-brands-svg-icons": "^5.12.0",
+    "@fortawesome/free-solid-svg-icons": "^5.12.0",
+    "@fortawesome/react-fontawesome": "^0.1.8",
+    "@types/chrome": "0.0.91",
+    "@types/react": "^16.9.16",
+    "@types/react-dom": "^16.9.4",
+    "@types/styled-components": "^4.4.1",
+    "awesome-typescript-loader": "^5.2.1",
+    "copy-webpack-plugin": "^5.1.1",
+    "mobx": "^5.15.0",
+    "mobx-react": "^6.1.4",
+    "prettier": "^1.19.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "styled-components": "^4.4.1",
+    "tslint": "^5.20.1",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.7.3",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  }
+}
