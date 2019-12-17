@@ -117,10 +117,7 @@ export class ZhihuStore {
 
   private async loadInitialHistoryList() {
     try {
-      if (
-        this.historyHasNext &&
-        this.historyLoadStatus.state !== 'inProgress'
-      ) {
+      if (this.historyLoadStatus.state !== 'inProgress') {
         const iterateResult = await this.historyDao.iterate({
           direction: 'backward',
           size: 30,

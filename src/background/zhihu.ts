@@ -60,6 +60,7 @@ export class Zhihu {
   private followersCount: number = 0;
   private followersCountLoadStatus: IAsyncStatus = getDefaultAsyncStatus();
   private followerList: IUser[] = [];
+  private lastFollowerCountFetchAt: number = 0;
 
   private followersCleanedCount: number = 0;
   private removeFanActionStatus: IAsyncStatus = getDefaultAsyncStatus();
@@ -210,6 +211,9 @@ export class Zhihu {
       (request: ISendMessageToBackgroundRequest, _sender, sendResponse) => {
         switch (request.job) {
           case 'getBasics':
+            if (this.lastFollowerCountFetchAt + 120_000 < Date.now()) {
+              this.fetchFollowerCount().catch(console.error);
+            }
             return sendResponse(this.getBasics());
           case 'reloadBasics':
             this.reloadBasics().catch(console.error);
@@ -271,6 +275,7 @@ export class Zhihu {
       this.followersCount = totalCount;
       this.followerList = followerList;
       this.followersCountLoadStatus.state = 'completed';
+      this.lastFollowerCountFetchAt = Date.now();
       await this.updateBasicsToFrontend();
     } catch (e) {
       this.followersCountLoadStatus.state = 'error';

@@ -3,13 +3,14 @@
   "name": "__MSG_extension_name__",
   "description": "__MSG_extension_description__",
   "short_name": "知乎假粉删除器",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "browser_action": {
     "default_icon": "images/icon_256.png",
     "default_title": "知乎假粉删除器~",
     "default_popup": "popup.html"
   },
   "icons": {
+    "128": "images/icon_128.png",
     "256": "images/icon_256.png"
   },
   "background": {
